@@ -10,19 +10,19 @@ let img = new Image();
 img.src = './assets/bg.jpg';
 
 function setup() {
-    canvas.height = window.innerHeight - 200;
-    //canvas.height = 700;
-    //canvas.width = 1000;
-    canvas.width = window.innerWidth - 800;
-    c.translate(canvas.width - 10, canvas.height - 100);
+    //canvas.height = window.innerHeight - 200;
+    canvas.height = 625;
+    canvas.width = 625;
+    //canvas.width = window.innerWidth - 800;
+    //c.translate(canvas.width - 10, canvas.height - 100);
 }
 setup();
 
 img.addEventListener("load", () => {
     c.save()
     c.globalCompositeOperation='destination-over'
-    //c.drawImage(img, 0, 0, 1000, 700);
-    c.drawImage(img, -800, -1000, window.innerWidth, window.innerHeight + 100);
+    c.drawImage(img, 0, 0, 600, 600);
+    //c.drawImage(img, -800, -1000, window.innerWidth, window.innerHeight + 100);
     c.restore();
 })
 
@@ -33,23 +33,21 @@ wood.addEventListener("load", () => {
 const drawImage = () => {
     c.save()
     c.globalCompositeOperation='destination-over'
-    //c.drawImage(img, 0, 0, 1000, 700);
-    c.drawImage(img, -800, -1000, window.innerWidth, window.innerHeight + 100);
+    c.drawImage(img, 0, 0, 600, 600);
+    //c.drawImage(img, -800, -1000, window.innerWidth, window.innerHeight + 100);
     c.restore();
 }
 drawImage();
 
-
-// drawing the ramp
 const drawRamp = (angle) => {
     c.save();
     c.beginPath();
     c.rotate(angle * Math.PI / 180);
-    c.moveTo(-750, 0);
-    //c.moveTo(900, 0);
+    //c.moveTo(-750, 0);
+    c.moveTo(800, 0);
     c.lineWidth = 20;
-    c.lineTo(0, 0);
-    //c.lineTo(100, 0);
+    //c.lineTo(0, 0);
+    c.lineTo(100, 0);
     c.strokeStyle=pat;
     c.stroke();
     c.restore();
@@ -59,34 +57,25 @@ const drawConnectingLine = (x1, angle) => {
     c.save();
     c.beginPath();
     c.rotate(angle * Math.PI / 180);
-    c.moveTo(-760, -29);
+    //c.moveTo(-760, -29);
+    c.moveTo(75, -29);
     c.lineWidth = 5;
+    //c.lineTo(x1, -29);
     c.lineTo(x1, -29);
     c.fillStyle = pat;
     c.stroke();
     c.restore();
 }
 
-// const drawCurvedLine = () => {
-//     c.moveTo(-100, -200);
-//     c.bezierCurveTo(-300, -100, -250, -50, -200, 0);
-//     c.stroke();
-//     c.save();
-//     c.beginPath();
-//     c.arc(-400, -200, -100, 0, Math.PI, false);
-//     c.lineWidth = 10;
-//     c.stroke();
-//     c.restore();
-// }
-
-// drawing the base -- this should stay fixed
 function drawBase() {
     c.save()
     c.beginPath();
     c.rotate(0 * Math.PI / 180);
-    c.moveTo(-600, 0);
+    //c.moveTo(-600, 0);
+    c.moveTo(570, 570);
     c.lineWidth = 30;
-    c.lineTo(0, 0);
+    //c.lineTo(0, 0);
+    c.lineTo(50, 570);
     c.strokeStyle=pat;
     c.stroke();
     c.restore();
@@ -137,25 +126,32 @@ const drawLine = (x1, y1, x2, y2) => {
 
 const drawCircle = () => {
     c.beginPath();
-    c.arc(-530, -545, 30, 0, 2 * Math.PI);
+    //c.arc(-530, -545, 30, 0, 2 * Math.PI);
+    c.arc(75, 55, 30, 0, 2 * Math.PI)
     c.fill();
 }
 function genRand(min, max, decimalPlaces) {
     return (Math.random() * (max - min) + min).toFixed(decimalPlaces);
-    // var rand = Math.random()*(max-min) + min;
-    // var power = Math.pow(100, decimalPlaces);
-    // return Math.floor(rand*power) / power;
 }
 
-var currX = -400; // set the initial X pos of the rectangle
-var currY = -58; // set the initial Y pos of the rectangle
+// var currX = -400;
+// var currY = -58;
 
-var weightPositionX = -570;
+var currX = 400;
+var currY = -58;
 
-var linePositionX1 = -530;
-var linePositionY1 = -532;
-var linePositionX2 = -530;
-var linePositionY2 = -400;
+// var weightPositionX = -570;
+
+// var linePositionX1 = -530;
+// var linePositionY1 = -532;
+// var linePositionX2 = -530;
+// var linePositionY2 = -400;
+var weightPositionX = 20;
+
+var linePositionX1 = 75;
+var linePositionY1 = 70;
+var linePositionX2 = 75;
+var linePositionY2 = 200;
 
 var criticalMass = genRand(99.5, 100.5, 1);
 var currentMass = 0;
@@ -164,20 +160,28 @@ var activeDown = false;
 var isUpOrDown = true;
 
 function upwardStart() {
-    currX = -400; // set the initial X pos of the rectangle
-    currY = -58; // set the initial Y pos of the rectangle
+    // currX = -400;
+    // currY = -58;
+    currX = 400;
+    currY = -58;
 
-    weightPositionX = -570;
+    // weightPositionX = -570;
 
-    linePositionX1 = -530;
-    linePositionY1 = -532;
-    linePositionX2 = -530;
-    linePositionY2 = -400;
+    // linePositionX1 = -530;
+    // linePositionY1 = -532;
+    // linePositionX2 = -530;
+    // linePositionY2 = -400;
+    weightPositionX = 20;
+
+    linePositionX1 = 60;
+    linePositionY1 = 70;
+    linePositionX2 = 60;
+    linePositionY2 = 200;
 
     isUpOrDown = true;
     changeButtonColor();
 
-    c.clearRect(55, 0, -1500, -790);
+    c.clearRect(0, 0, 700, 700);
     const currAngle = 45;
     drawImage();
     drawRamp(currAngle);
@@ -187,26 +191,32 @@ function upwardStart() {
     //rectangle(weightPositionX, linePositionY2, 0); //Draw weights box
     drawWeight(weightPositionX, linePositionY2);
     drawLine(linePositionX1, linePositionY1, linePositionX2, linePositionY2); //Draw connecting line
-    //requestAnimationFrame(upwardStart); // call the animateframe to display
-
+    drawBase();
 }
 upwardStart();
 
 function downwardStart() {
-    currX = -730; // set the initial X pos of the rectangle
-    currY = -58; // set the initial Y pos of the rectangle
+    //currX = -730;
+    currX = 120;
+    currY = -58;
 
-    weightPositionX = -570;
+    // weightPositionX = -570;
 
-    linePositionX1 = -530;
-    linePositionY1 = -532;
-    linePositionX2 = -530;
-    linePositionY2 = -100;
+    // linePositionX1 = -530;
+    // linePositionY1 = -532;
+    // linePositionX2 = -530;
+    // linePositionY2 = -100;
+    weightPositionX = 20;
+
+    linePositionX1 = 60;
+    linePositionY1 = 70;
+    linePositionX2 = 60;
+    linePositionY2 = 480;
 
     isUpOrDown = false;
     changeButtonColor();
 
-    c.clearRect(55, 0, -1500, -790);
+    c.clearRect(0, 0, 700, 700);
     const currAngle = 45;
     drawImage();
     drawRamp(currAngle);
@@ -216,8 +226,7 @@ function downwardStart() {
     //rectangle(weightPositionX, linePositionY2, 0); //Draw weights box
     drawWeight(weightPositionX, linePositionY2);
     drawLine(linePositionX1, linePositionY1, linePositionX2, linePositionY2); //Draw connecting line
-    //requestAnimationFrame(downwardStart); // call the animateframe to display
-
+    drawBase();
 }
 // downwardStart();
 
@@ -242,13 +251,13 @@ function startAnim() {
 function upRamp() {
     var label = currentMass.toFixed(2);
     if (activeUp) {
-        c.clearRect(55, 0, -1500, -790);
+        c.clearRect(0, 0, 700, 700);
         const currAngle = 45;
         drawImage();
         drawRamp(currAngle);
+        drawBase();
         currX = currX - 5; // increment x pos
-        console.log(currX);
-        if (currX >= -730) {
+        if (currX >= 120) {
             linePositionY2 += 5;
             rectangle(currX, currY, currAngle);
             drawConnectingLine(currX, 45);
@@ -256,15 +265,16 @@ function upRamp() {
             drawWeight(weightPositionX, linePositionY2);
             //rectangle(weightPositionX, linePositionY2, 0);
             drawLine(linePositionX1, linePositionY1, linePositionX2, linePositionY2);
+            console.log(currX + ": " + linePositionY2);
         }
         else {
-            currX = -730;
+            currX = 120;
             rectangle(currX, -58, currAngle);
             drawConnectingLine(currX, 45);
             drawCircle();
-            drawWeight(weightPositionX, -100);
+            drawWeight(weightPositionX, 480);
             //rectangle(weightPositionX, -150, 0);
-            drawLine(linePositionX1, linePositionY1, linePositionX2, -100);
+            drawLine(linePositionX1, linePositionY1, linePositionX2, 480);
             activeUp = false;
         }
         requestAnimationFrame(upRamp);
@@ -274,12 +284,13 @@ function upRamp() {
 function downRamp() {
     var label = currentMass.toFixed(2);
     if (activeDown) {
-        c.clearRect(55, 0, -1500, -790);
+        c.clearRect(0, 0, 700, 700);
         const currAngle = 45;
         drawImage();
         drawRamp(currAngle);
+        drawBase();
         currX += 5;
-        if (currX < -400) {
+        if (currX < 400) {
             linePositionY2 -= 5;
             rectangle(currX, currY, currAngle);
             drawConnectingLine(currX, 45);
@@ -288,12 +299,12 @@ function downRamp() {
             drawLine(linePositionX1, linePositionY1, linePositionX2, linePositionY2);
         }
         else {
-            currX = -400
+            currX = 400
             rectangle(currX, -58, currAngle);
             drawConnectingLine(currX, 45);
             drawCircle();
-            drawWeight(weightPositionX, -400);
-            drawLine(linePositionX1, linePositionY1, linePositionX2, -400);
+            drawWeight(weightPositionX, 200);
+            drawLine(linePositionX1, linePositionY1, linePositionX2, 200);
             activeDown = false;
         }
         requestAnimationFrame(downRamp);
@@ -307,22 +318,27 @@ function resetPosition() {
     massLabel.innerHTML = currentMass.toFixed(2);
     currY = -58;
 
-    weightPositionX = -570;
+    // weightPositionX = -570;
 
-    linePositionX1 = -530;
-    linePositionY1 = -532;
-    linePositionX2 = -530;
+    // linePositionX1 = -530;
+    // linePositionY1 = -532;
+    // linePositionX2 = -530;
+        weightPositionX = 20;
+
+        linePositionX1 = 60;
+        linePositionY1 = 70;
+        linePositionX2 = 60;
 
     if (isUpOrDown) {
-        currX = -400;
-        linePositionY2 =  -400;
+        currX = 400;
+        linePositionY2 =  200;
     } else {
-        currX = -730;
-        linePositionY2 =  -100;
+        currX = 120;
+        linePositionY2 =  480;
     }
     changeButtonColor();
 
-    c.clearRect(55, 0, -1500, -790);
+    c.clearRect(0, 0, 700, 700);
     const currAngle = 45;
     drawImage();
     drawRamp(currAngle);
@@ -333,6 +349,7 @@ function resetPosition() {
 
     drawWeight(weightPositionX, linePositionY2);
     drawLine(linePositionX1, linePositionY1, linePositionX2, linePositionY2);
+    drawBase();
     document.getElementById('add_mass').value = '';
 }
 

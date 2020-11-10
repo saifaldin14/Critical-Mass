@@ -1,13 +1,7 @@
-.asset {
-  width: 7rem;
-}
 .navbar {
   background-color: black;
 }
 
-.container {
-  padding: 2rem;
-}
 .blue {
   font-weight: 700;
   /* color: #007bff; */
@@ -20,7 +14,6 @@ label {
   font-size: large;
   font-weight: 500;
 }
-
 #wood {
   display: none;
 }
@@ -28,42 +21,26 @@ label {
 
 #submit_button {
   margin: 1rem;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
 #submit_button1 {
   margin: 1rem;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
 #submit_button2 {
   margin: 1rem;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-}
-
-#massLabel {
-  /* color: rgb(39, 73, 167) */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
 #full-display {
   display: flex;
   flex-direction: row;
 }
-
+/*
 #input-div {
   width: 50%;
-}
+} */
 
-#div-label-1 {
+/* #div-label-1 {
   zoom: 1.5;
   -moz-transform: scale(1.5);
 }
@@ -82,7 +59,7 @@ label {
   position: absolute;
   bottom: 0;
   margin-bottom: 10rem;
-}
+} */
 
 #direction-buttons {
   display: flex;
